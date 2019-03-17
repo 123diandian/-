@@ -1,3 +1,4 @@
+import profile
 import numpy
 import random
 import string
@@ -74,86 +75,89 @@ def c2(q,ans):
         ans.append(Fraction(f1,f2))
 
 
-while 1:
-    print("输入类型序号： 1.测试  2.练习  3.退出")
-    t = int(input())
-    if t == 3:
-        break
-    elif t == 1:  ##测试
-        print("输入想要的四则运算序号： 1.整数  2.真分数  3.混合  4.退出")
-        n = int(input())
-        while n > 4:
-            print("输入有误，重新输入")
-            n = int(input())
-        if n == 4:
+def main():
+    while 1:
+        print("输入类型序号： 1.测试  2.练习  3.退出")
+        t = int(input())
+        if t == 3:
             break
-        print("输入题目的数量", end='  ')
-        k = int(input())
-        p = 100 / k
-        s = 0
-        q = []
-        ans = []
-        if n == 1:  ##整数测试
-            for i in range(k):
-                c1(q, ans)
-        elif n == 2:  ##分数测试
-            for i in range(k):
-                c2(q, ans)
-        elif n == 3:  ##混合测试
-            for i in range(k):
-                n = random.randint(1, 3)
-                if n == 1:
-                    c1(q, ans)
-                else:
-                    c2(q, ans)
-        for i in range(k):
-            print("第{}题：{}".format(i + 1, q[i]), end='  ')
-            a = input()
-            if a == str(ans[i]):
-                s = s + p
-        print("所得的分数为：{}".format(s))
-        print("是否查看正确答案：1.是  2.否", end='   ')
-        da = int(input())
-        if da == 1:
-            for i in range(k):
-                print(q[i] + str(a[i]))
-
-
-
-    elif t == 2:  ##练习
-        print("输入想要的四则运算序号： 1.整数  2.真分数  3.混合  4.退出")
-        n = int(input())
-        while n > 4:
-            print("输入有误，重新输入")
+        elif t == 1:  ##测试
+            print("输入想要的四则运算序号： 1.整数  2.真分数  3.混合  4.退出")
             n = int(input())
-        if n == 4:
-            break
-        print("输入题目的数量", end='  ')
-        k = int(input())
-        q = []
-        ans = []
-        if n == 1:
-            for i in range(k):
-                c1(q, ans)
-        elif n == 2:
-            for i in range(k):
-                c2(q, ans)
-        elif n == 3:
-            for i in range(k):
-                n = random.randint(1, 3)
-                if n == 1:
+            while n > 4:
+                print("输入有误，重新输入")
+                n = int(input())
+            if n == 4:
+                break
+            print("输入题目的数量", end='  ')
+            k = int(input())
+            p = 100 / k
+            s = 0
+            q = []
+            ans = []
+            if n == 1:  ##整数测试
+                for i in range(k):
                     c1(q, ans)
-                else:
+            elif n == 2:  ##分数测试
+                for i in range(k):
                     c2(q, ans)
+            elif n == 3:  ##混合测试
+                for i in range(k):
+                    n = random.randint(1, 3)
+                    if n == 1:
+                        c1(q, ans)
+                    else:
+                        c2(q, ans)
+            for i in range(k):
+                print("第{}题：{}".format(i + 1, q[i]), end='  ')
+                a = input()
+                if a == str(ans[i]):
+                    s = s + p
+            print("所得的分数为：{}".format(s))
+            print("是否查看正确答案：1.是  2.否", end='   ')
+            da = int(input())
+            if da == 1:
+                for i in range(k):
+                    print(q[i] + str(ans[i]))
+
+
+
+        elif t == 2:  ##练习
+            print("输入想要的四则运算序号： 1.整数  2.真分数  3.混合  4.退出")
+            n = int(input())
+            while n > 4:
+                print("输入有误，重新输入")
+                n = int(input())
+            if n == 4:
+                break
+            print("输入题目的数量", end='  ')
+            k = int(input())
+            q = []
+            ans = []
+            if n == 1:
+                for i in range(k):
+                    c1(q, ans)
+            elif n == 2:
+                for i in range(k):
+                    c2(q, ans)
+            elif n == 3:
+                for i in range(k):
+                    n = random.randint(1, 3)
+                    if n == 1:
+                        c1(q, ans)
+                    else:
+                        c2(q, ans)
+            else:
+                print("输入有误！请重新输入")
+
+            for i in range(k):
+                print("第{}题：{}".format(i + 1, q[i]), end='  ')
+                a = input()
+                if a == str(ans[i]):
+                    print("回答正确")
+                else:
+                    print("回答错误，正确答案是：{}".format(ans[i]))
         else:
             print("输入有误！请重新输入")
 
-        for i in range(k):
-            print("第{}题：{}".format(i + 1, q[i]), end='  ')
-            a = input()
-            if a == str(ans[i]):
-                print("回答正确")
-            else:
-                print("回答错误，正确答案是：{}".format(ans[i]))
-    else:
-        print("输入有误！请重新输入")
+profile.run('main()')
